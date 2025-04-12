@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e4fcec;
+}
+.nombre_clase{
+    color: #f10808;
+    /* 0C2C47 */
+}
+.titulo_bienvedida{
+    color: hsl(0, 96%, 36%);
+    /* 0C2C47 */
+}
+.titulo_bienvedida:hover{
+    color: hsl(125, 87%, 37%);
+    /* 0C2C47 */
+}
+.titulo_bienvedida::first-letter{
+    color: hsl(125, 87%, 37%);
+    /* 0C2C47 */
+}
+.font_sizeXL{
+    font-size: 50px;
+}
+#nombre_id{
+    color: #f10808;
+}
+p{
+    font-size: 2em;
+}

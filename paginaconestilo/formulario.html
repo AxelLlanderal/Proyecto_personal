@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario con EmailJS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Biblioteca de EMAILJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Inicializa EmailJS con tu User ID
+        (function () {
+            emailjs.init("MBn_6E1AnwtD9AkcH");
+        })();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            background-color: #4460AA;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #36508A;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Formulario de Contacto</h1>
+        <form id="contact-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Ingresa tu correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+
+            <label for="remitente">Fecha:</label>
+            <input type="text" id="remitente" name="remitente" required>
+
+            <button type="submit">Enviar</button>
+
+            <button onclick="location.href='mipagina.html'">Regresar</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Define los identificadores del servicio y la plantilla de EmailJS.
+            const serviceID = 'service_fzvn1mf';
+            const templateID = 'template_s05vfmd';
+            // Recopila los valores de los campos del formulario en un objeto
+            const variables = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                mensaje: document.getElementById('mensaje').value,
+                remitente: document.getElementById('remitente').value
+            };
+
+            emailjs.send(serviceID, templateID, variables)
+                .then(function () {
+                    alert('Mensaje enviado con éxito.');
+                })
+                .catch(function (error) {
+                    alert('Error al enviar el mensaje: Hubo un problema al enviar tu solicitud.');
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
